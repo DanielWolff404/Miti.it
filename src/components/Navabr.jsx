@@ -1,14 +1,14 @@
 import React from 'react'
-import { navlinks } from '../constants/index.js'
+import { navLinks } from '../constants';
 
-const Navabr = () => {
+const Navabar = () => {
   return (
     <header>
         <nav>
             <img src="/logo.svg" alt="Apple Logo" />
 
             <ul>
-             {navlinks.map(({label}) => (
+             {navLinks.map(({label}) => (
                 <li key={label}>
                   <a href={label}>{label}</a>
                 </li>
@@ -33,4 +33,4 @@ const Navabr = () => {
   )
 }
 
-export default Navabr
+export default Navabar
