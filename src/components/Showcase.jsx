@@ -5,24 +5,26 @@ import { gsap } from "gsap";
 const Showcase = () => {
 
     const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
++     useGSAP(() => {
+        if (isTablet) {
+            return;
+        }
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#showcase",
+                start: "top top",
+                end : "bottom top",
+                scrub: true,
+                pin: true,
+            }
+        });
+        timeline.to('.mask img', {
+            transform: 'scale(1.1)',
+        }).to('.content', { opacity: 1, y: 0, ease: "power1.in" });
+        return () => timeline.kill();
+    }, { dependencies: [isTablet], revertOnUpdate: true });
 
-    useGSAP(() => {
-        if (!isTablet){
-            const timeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#showcase",
-                    start: "top top",
-                    end : "bottom top",
-                    scrub: true,
-                    pin: true,
-                }
 
-            });
-            timeline.to('.mask img', {
-                transform: 'scale(1.1)',
-            }).to('.content', {opacity: 1, y: 0, ease : "power1.in"})
-        }      
-    },[isTablet]);
 
   return (
     <section id="showcase" >
