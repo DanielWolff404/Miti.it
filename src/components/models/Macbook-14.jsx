@@ -22,6 +22,8 @@ export default function MacbookModel14(props) {
 
 
    const texture = useTexture('/screen.png');
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.needsUpdate = true;
 
    useEffect(() => {
 
