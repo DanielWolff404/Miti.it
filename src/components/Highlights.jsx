@@ -1,14 +1,16 @@
 import { useGSAP } from '@gsap/react';
-import React from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 const Highlights = () => {
 
 const isMobile = useMediaQuery( { query: "(max-width: 1024px)" });
 
 
 useGSAP(() =>{
-  gsap.to(['.left-column ', '.right-column '],{
+  gsap.to(['.left-column', '.right-column'],{
     scrollTrigger:{
       trigger: '#highlights',
       start: isMobile ? 'bottom bottom' : 'top top',
@@ -30,13 +32,13 @@ useGSAP(() =>{
   return (
     <section id="highlights">
       
-      <h2>There´s never been a better time to upgrade.</h2>
-      <h3>Here´s what you get with the new Macbook Pro.</h3>
+      <h2>There's never been a better time to upgrade.</h2>
+      <h3>Here's what you get with the new Macbook Pro.</h3>
 
       <div className='masonry'>
         <div className='left-column'>
           <div >
-            <img src="/laptop.png" alt="Laptop" />
+            <img src="/laptop.png" alt="Laptop" with="..." height="..." />
             <p>Fly through demanding tasks up to 9.8x faster.</p>
           </div>
            <div >

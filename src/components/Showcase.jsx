@@ -1,11 +1,13 @@
 import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "react-responsive";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
+gsap.registerPlugin(ScrollTrigger);
 const Showcase = () => {
 
     const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
-+     useGSAP(() => {
++    useGSAP(() => {
         if (isTablet) {
             return;
         }
@@ -29,9 +31,9 @@ const Showcase = () => {
   return (
     <section id="showcase" >
         <div className="media ">
-            <video src="/videos/game.mp4" loop muted autoPlay playsInline /> 
+            <video src="/videos/game.mp4" loop muted autoPlay playsInline aria-label="Game demonstration video"/> 
             <div className="mask">
-                <img src="/mask-logo.svg" alt="" />
+                <img src="/mask-logo.svg" alt="Rocket Chip logo mask" />
             </div>
 
         </div>
@@ -48,9 +50,9 @@ const Showcase = () => {
                             </span>
                             . M4 powers 
                         </p>
-                        <p>it drives Apple intelligence on iPad Pro, so you can write, create, and accomplish more with ease. All in a design that´s unbelievably thin,light, and powerful
+                        <p>it drives Apple intelligence on iPad Pro, so you can write, create, and accomplish more with ease. All in a design that's unbelievably thin,light, and powerful
                         </p>
-                        <p>A brand-new display engine delivers breathtaking precision,color accuracy, and brightness. And a next-gen GPU with hardware-accelerated ray tracing brings concole-level graphics to your fingertips
+                        <p>A brand-new display engine delivers breathtaking precision,color accuracy, and brightness. And a next-gen GPU with hardware-accelerated ray tracing brings console-level graphics to your fingertips
                         </p>
                         <p className="text-primary">
                            Learn more about Apple intelligence 

@@ -30,7 +30,6 @@ const Performance = () => {
         start: "top 80%",
         end: "bottom 20%",
         scrub: true,
-        once: true,
         invalidateOnRefresh: true,
       },
     }

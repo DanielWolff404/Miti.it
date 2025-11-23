@@ -14,27 +14,42 @@ import useMacbookStore from '../store'
 const ModelScroll = () =>{
 
   const groupRef = useRef(null)
+  const videosRef = useRef([])
 
   const isMobile = useMediaQuery ({ query: "(max-width: 1024px)" });
 
   const {setTexture} = useMacbookStore();
   
   useEffect(() => {
+    // Initialize ref array to ensure it exists
+    videosRef.current = [];
     
-  featureSequence.forEach((feature) => {
+    featureSequence.forEach((feature) => {
+      const v = document.createElement('video');
 
-    const v = document.createElement('video');
+      Object.assign(v, {
+          src: feature.videoPath,
+          muted: true,
+          preload: 'auto',
+          playsInline: true,
+          crossOrigin: 'anonymous',
+      });
 
-    Object.assign(v, {
-        src: feature.videoPath,
-        muted: true,
-        preload: 'auto',
-        playsInline: true,
-        crossOrigin: 'anonymous',
-    });
-
-    v.load()
-  })
+      v.load()
+      videosRef.current.push(v);
+    })
+    
+    // Cleanup function to prevent memory leaks
+    return () => {
+      if (videosRef.current) {
+        videosRef.current.forEach(video => {
+          video.pause();
+          video.src = '';
+          video.load();
+        });
+        videosRef.current = [];
+      }
+    };
       
 
   }, [])
@@ -53,7 +68,7 @@ const ModelScroll = () =>{
       }
     });
 
-    // synce the features content
+    // sync the features content
     const timeline = gsap.timeline({
       scrollTrigger: {
          trigger: '#f-canvas',
@@ -74,19 +89,19 @@ const ModelScroll = () =>{
 
   // content & Texture sync with 3D model
   timeline
-  .call(()=> setTexture("/vidoes/feature-1.mp4"))
+  .call(()=> setTexture("/videos/feature-1.mp4"))
   .to (".box1", {opacity: 1, y: 0, delay: 1 , })
 
-  .call(()=> setTexture("/vidoes/feature-2.mp4"))
+  .call(()=> setTexture("/videos/feature-2.mp4"))
   .to (".box2", {opacity: 1, y: 0,  })
 
-  .call(()=> setTexture("/vidoes/feature-3.mp4"))
+  .call(()=> setTexture("/videos/feature-3.mp4"))
   .to (".box3", {opacity: 1, y: 0,  })
 
-  .call(()=> setTexture("/vidoes/feature-4.mp4"))
+  .call(()=> setTexture("/videos/feature-4.mp4"))
   .to (".box4", {opacity: 1, y: 0, })
 
-  .call(()=> setTexture("/vidoes/feature-5.mp4"))
+  .call(()=> setTexture("/videos/feature-5.mp4"))
   .to (".box5", {opacity: 1, y: 0, })
   
 
@@ -111,7 +126,7 @@ const ModelScroll = () =>{
 }
 
 
-const Feautres = () => {
+const Features = () => {
 
 
 
@@ -132,7 +147,7 @@ const Feautres = () => {
 
       <div className='absolute inset-0'>
       {features.map((feature, index) => (
-        <div  className={clsx('box', `box${index + 1 }`, feature.styles)}>
+        <div key={index} className={clsx('box', `box${index + 1 }`, feature.styles)}>
           
           <img src={feature.icon} alt={feature.highlight} />
           <p>
@@ -150,4 +165,4 @@ const Feautres = () => {
   )
 }
 
-export default Feautres
+export default Features
