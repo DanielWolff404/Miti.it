@@ -6,7 +6,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger ,SplitText} from 'gsap/all'
 import Showcase from './components/Showcase'
 import Performance from './components/Performance'
-import Feautres from './components/Feautres'
+import Features from './components/Features'
 import Highlights from './components/Highlights'
 import Footer from './components/Footer'
 
@@ -19,7 +19,7 @@ const App = () => {
    <ProductViewer />
    <Showcase />
    <Performance />
-   <Feautres />
+   <Features />
    <Highlights />
    <Footer />
   </main>

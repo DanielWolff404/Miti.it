@@ -8,13 +8,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 const Performance = () => {
 
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const sectionRef = useRef(null);
-  gsap.registerPlugin(ScrollTrigger);
+  
   useGSAP(() => {
   // text animation
   gsap.fromTo(

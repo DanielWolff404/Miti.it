@@ -38,7 +38,7 @@ useGSAP(() =>{
       <div className='masonry'>
         <div className='left-column'>
           <div >
-            <img src="/laptop.png" alt="Laptop" with="..." height="..." />
+            <img src="/laptop.png" alt="Laptop" width="..." height="..." />
             <p>Fly through demanding tasks up to 9.8x faster.</p>
           </div>
            <div >

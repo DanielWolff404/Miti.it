@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Showcase = () => {
 
     const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
-+    useGSAP(() => {
+    useGSAP(() => {
         if (isTablet) {
             return;
         }

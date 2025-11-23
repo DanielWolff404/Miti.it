@@ -19,10 +19,7 @@ const Footer = () => {
             <li key={label}>
               <a href={link}>{label}</a>
             </li>
-          )
-
-          
-          )}
+          ))}
         </ul>
       </div>
 
